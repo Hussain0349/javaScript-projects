@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate - Personal Study Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h1>StudyMate</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</li>
+                    <li data-section="subjects"><i class="fas fa-book"></i> Subjects</li>
+                    <li data-section="tasks"><i class="fas fa-tasks"></i> Tasks</li>
+                    <li data-section="timer"><i class="fas fa-clock"></i> Study Timer</li>
+                    <li data-section="progress"><i class="fas fa-chart-line"></i> Progress</li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <h2>Dashboard</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Subjects</h3>
+                        <p id="total-subjects">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Tasks Today</h3>
+                        <p id="total-tasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed</h3>
+                        <p id="completed-tasks">0</p>
+                    </div>
+                </div>
+                <div class="quote-container">
+                    <p id="motivational-quote">"The expert in anything was once a beginner."</p>
+                </div>
+            </section>
+
+            <!-- Subjects Section -->
+            <section id="subjects" class="section">
+                <h2>My Subjects</h2>
+                <div class="add-subject">
+                    <input type="text" id="subject-input" placeholder="Add a new subject...">
+                    <button id="add-subject-btn"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                <ul id="subject-list" class="subject-list"></ul>
+            </section>
+
+            <!-- Tasks Section -->
+            <section id="tasks" class="section">
+                <h2>My Tasks</h2>
+                <div class="task-controls">
+                    <div class="add-task">
+                        <input type="text" id="task-input" placeholder="Add a new task...">
+                        <select id="subject-select">
+                            <option value="">Select Subject</option>
+                        </select>
+                        <button id="add-task-btn"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                    <div class="task-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                    </div>
+                </div>
+                <ul id="task-list" class="task-list"></ul>
+            </section>
+
+            <!-- Timer Section -->
+            <section id="timer" class="section">
+                <h2>Study Timer</h2>
+                <div class="timer-container">
+                    <div class="timer-display">
+                        <span id="minutes">25</span>:<span id="seconds">00</span>
+                    </div>
+                    <div class="timer-controls">
+                        <button id="start-timer" class="timer-btn"><i class="fas fa-play"></i> Start</button>
+                        <button id="pause-timer" class="timer-btn"><i class="fas fa-pause"></i> Pause</button>
+                        <button id="reset-timer" class="timer-btn"><i class="fas fa-redo"></i> Reset</button>
+                    </div>
+                    <div class="timer-options">
+                        <button class="mode-btn active" data-time="25">Study (25m)</button>
+                        <button class="mode-btn" data-time="5">Break (5m)</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress" class="section">
+                <h2>My Progress</h2>
+                <div class="progress-container">
+                    <div class="progress-circle">
+                        <svg class="progress-ring" width="200" height="200">
+                            <circle class="progress-ring-circle" stroke-width="10" fill="transparent" r="90" cx="100" cy="100"/>
+                        </svg>
+                        <div class="progress-text">
+                            <span id="progress-percent">0</span>%
+                        </div>
+                    </div>
+                    <div class="progress-details">
+                        <h3>Completion Rate</h3>
+                        <p>You've completed <span id="completed-count">0</span> out of <span id="total-count">0</span> tasks this week.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <audio id="timer-alert" src="assets/sounds/alert.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
